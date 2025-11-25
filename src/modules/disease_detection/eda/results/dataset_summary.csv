@@ -1,0 +1,17 @@
+Class,Image_Count,Plant_Type,Disease_Status
+Tomato__Tomato_YellowLeaf__Curl_Virus,3208,Unknown,Unknown
+Tomato_Bacterial_spot,2127,Unknown,Unknown
+Tomato_Late_blight,1909,Unknown,Unknown
+Tomato_Septoria_leaf_spot,1771,Unknown,Unknown
+Tomato_Spider_mites_Two_spotted_spider_mite,1676,Unknown,Unknown
+Tomato_healthy,1591,Unknown,Unknown
+Pepper__bell___healthy,1478,Pepper__bell,healthy
+Tomato__Target_Spot,1404,Unknown,Unknown
+Potato___Early_blight,1000,Potato,Early_blight
+Potato___Late_blight,1000,Potato,Late_blight
+Tomato_Early_blight,1000,Unknown,Unknown
+Pepper__bell___Bacterial_spot,997,Pepper__bell,Bacterial_spot
+Tomato_Leaf_Mold,952,Unknown,Unknown
+Tomato__Tomato_mosaic_virus,373,Unknown,Unknown
+Potato___healthy,152,Potato,healthy
+PlantVillage,0,Unknown,Unknown

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>💰 Market Analysis - CropCareAI</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="module-container">
+            <h2>💰 Market Analysis</h2>
+            <p>Price predictions and market trends (Under Development)</p>
+            
+            <div class="dev-notice">
+                🚧 <strong>Under Development:</strong> This module is currently being enhanced with advanced ML models for better price predictions.
+            </div>
+            
+            <div class="input-group">
+                <label for="marketCrop">Crop for Analysis:</label>
+                <select id="marketCrop">
+                    <option value="wheat">🌾 Wheat</option>
+                    <option value="rice">🍚 Rice</option>
+                    <option value="corn">🌽 Corn</option>
+                    <option value="cotton">🧵 Cotton</option>
+                    <option value="sugarcane">🎋 Sugarcane</option>
+                </select>
+            </div>
+            
+            <button class="btn btn-development" onclick="getMarketAnalysis()">💰 Analyze Market</button>
+            <div id="marketResult" class="result warning"></div>
+        </div>
+    </div>
+    
+    <div id="footer-container"></div>
+
+    <script src="assets/js/common.js"></script>
+    <script>
+        async function getMarketAnalysis() {
+            showResult('marketResult', '<div class="loading">💹 Analyzing market trends and price data...</div>');
+            try {
+                const response = await fetch(`${API_BASE}/market-analysis`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        crop_type: document.getElementById('marketCrop').value
+                    })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    const analysis = result.market_analysis;
+                    showResult('marketResult', `
+                        <strong>💰 Market Analysis Report</strong>
+                        <br><br>
+                        <strong>🌾 Crop:</strong> ${document.getElementById('marketCrop').value}<br>
+                        <strong>💰 Estimated Price:</strong> $${analysis.predicted_price} ${analysis.currency}<br>
+                        <br><em>${analysis.note}</em>
+                    `, 'info');
+                } else {
+                    showResult('marketResult', `❌ Error: ${result.error}`, 'warning');
+                }
+            } catch (error) {
+                showResult('marketResult', `❌ Network error: ${error}`, 'warning');
+            }
+        }
+    </script>
+</body>
+</html>

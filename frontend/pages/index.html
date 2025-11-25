@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌱 CropCareAI - Smart Farming Assistant</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <!-- Load Header -->
+    <script>
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('afterbegin', data);
+            });
+    </script>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🌱 CropCareAI Pro</h1>
+            <p>Revolutionizing agriculture with AI-powered insights. Get personalized crop recommendations, disease detection, yield predictions, and market analysis to maximize your farming success.</p>
+            <button class="btn" onclick="scrollToModules()">Explore Modules</button>
+        </div>
+
+        <!-- Modules Section -->
+        <div class="modules-section" id="modules">
+            <h2>🚀 AI-Powered Modules</h2>
+            <div class="modules-grid">
+                <!-- Crop Recommendation -->
+                <div class="module-card" onclick="window.location.href='/crop.html'">
+                    <div class="module-icon">🌱</div>
+                    <h3>Crop Recommendation</h3>
+                    <p>Find the perfect crop for your soil conditions using advanced machine learning algorithms.</p>
+                    <span class="status status-production">✅ Production Ready</span>
+                    <div style="margin-top: 20px;">
+                        <button class="btn">Get Started</button>
+                    </div>
+                </div>
+
+                <!-- Pest Management -->
+                <div class="module-card" onclick="window.location.href='/pest.html'">
+                    <div class="module-icon">🐛</div>
+                    <h3>Pest Management</h3>
+                    <p>Identify pests and get targeted treatment recommendations to protect your crops.</p>
+                    <span class="status status-production">✅ Production Ready</span>
+                    <div style="margin-top: 20px;">
+                        <button class="btn">Protect Crops</button>
+                    </div>
+                </div>
+
+                <!-- Yield Prediction -->
+                <div class="module-card" onclick="window.location.href='/yield.html'">
+                    <div class="module-icon">📈</div>
+                    <h3>Yield Prediction</h3>
+                    <p>Predict your crop yield with advanced ML models and optimize your harvest planning.</p>
+                    <span class="status status-production">✅ Production Ready</span>
+                    <div style="margin-top: 20px;">
+                        <button class="btn">Predict Yield</button>
+                    </div>
+                </div>
+
+                <!-- Disease Detection -->
+                <div class="module-card" onclick="window.location.href='/disease.html'">
+                    <div class="module-icon">🦠</div>
+                    <h3>Disease Detection</h3>
+                    <p>Detect plant diseases early and get treatment recommendations to save your crops.</p>
+                    <span class="status status-production">✅ Production Ready</span>
+                    <div style="margin-top: 20px;">
+                        <button class="btn">Detect Diseases</button>
+                    </div>
+                </div>
+
+                <!-- Market Analysis -->
+                <div class="module-card" onclick="window.location.href='/market.html'">
+                    <div class="module-icon">💰</div>
+                    <h3>Market Analysis</h3>
+                    <p>Get price predictions and market trends to make informed selling decisions.</p>
+                    <span class="status status-development">🔧 Under Development</span>
+                    <div style="margin-top: 20px;">
+                        <button class="btn" style="background: #ff9800;">Analyze Market</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Footer -->
+    <script>
+        fetch('/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+
+    <script>
+        function scrollToModules() {
+            document.getElementById('modules').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+    </script>
+</body>
+</html>

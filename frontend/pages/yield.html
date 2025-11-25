@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📈 Yield Prediction - CropCareAI</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="module-container">
+            <h2>📈 Yield Prediction</h2>
+            <p>Predict your crop yield</p>
+            
+            <div class="input-group">
+                <label for="area">Farm Area (hectares):</label>
+                <input type="number" id="area" value="10" min="1" max="1000">
+                <div class="help-text">Total cultivation area in hectares</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="cropTypeYield">Crop Type:</label>
+                <select id="cropTypeYield">
+                    <option value="wheat">🌾 Wheat</option>
+                    <option value="rice">🍚 Rice</option>
+                    <option value="corn">🌽 Corn</option>
+                    <option value="cotton">🧵 Cotton</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="getYieldPrediction()">📈 Predict Yield</button>
+            <div id="yieldResult" class="result"></div>
+        </div>
+    </div>
+    
+    <div id="footer-container"></div>
+
+    <script src="assets/js/common.js"></script>
+    <script>
+        async function getYieldPrediction() {
+            showResult('yieldResult', '<div class="loading">📊 Calculating yield prediction based on area and crop type...</div>');
+            try {
+                const response = await fetch(`${API_BASE}/yield-prediction`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        area: parseFloat(document.getElementById('area').value),
+                        crop_type: document.getElementById('cropTypeYield').value
+                    })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    showResult('yieldResult', `
+                        <strong>📈 Yield Prediction Report</strong>
+                        <br><br>
+                        <strong>🌾 Crop:</strong> ${document.getElementById('cropTypeYield').value}<br>
+                        <strong>📐 Area:</strong> ${result.area_hectares} hectares<br>
+                        <strong>📦 Expected Yield:</strong> ${result.predicted_yield} ${result.units}<br>
+                        <br><em>Note: Based on current prediction model (50.7% R²)</em>
+                    `);
+                } else {
+                    showResult('yieldResult', `❌ Error: ${result.error}`, 'warning');
+                }
+            } catch (error) {
+                showResult('yieldResult', `❌ Network error: ${error}`, 'warning');
+            }
+        }
+    </script>
+</body>
+</html>

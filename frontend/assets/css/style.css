@@ -1,0 +1,244 @@
+/* Reset and Base Styles */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body { 
+    font-family: 'Arial', sans-serif; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+/* Header Styles */
+.main-header {
+    background: white;
+    border-radius: 15px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: #2c7744;
+    font-size: 2em;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    color: #2c7744;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: #e8f5e8;
+}
+
+/* Hero Section */
+.hero {
+    background: white;
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #2c7744;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* Modules Grid */
+.modules-section {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.modules-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c7744;
+    font-size: 2.5em;
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.module-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: #4CAF50;
+}
+
+.module-icon {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.module-card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.module-card p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.status-production { 
+    background: #d4edda; 
+    color: #155724; 
+}
+
+.status-development { 
+    background: #fff3cd; 
+    color: #856404; 
+}
+
+/* Footer */
+.main-footer {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    color: #666;
+}
+
+/* Module Container */
+.module-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.module-container h2 {
+    color: #2c7744;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* Form Styles */
+.input-group { 
+    margin-bottom: 20px; 
+}
+
+.input-group label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: 600; 
+    color: #333; 
+}
+
+input, select { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+    font-size: 16px; 
+}
+
+.field-group { 
+    background: #f0f7f0; 
+    padding: 20px; 
+    border-radius: 10px; 
+    margin: 20px 0; 
+    border-left: 4px solid #4CAF50; 
+}
+
+.field-group h4 { 
+    margin: 0 0 15px 0; 
+    color: #2c7744; 
+}
+
+/* Result Styles */
+.result { 
+    margin-top: 20px; 
+    padding: 20px; 
+    background: #e8f5e8; 
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+}
+
+.loading { 
+    color: #666; 
+    font-style: italic; 
+}

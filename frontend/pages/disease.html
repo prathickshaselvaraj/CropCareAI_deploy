@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🦠 Disease Detection - CropCareAI</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="module-container">
+            <h2>🦠 Disease Detection</h2>
+            <p>Identify common plant diseases</p>
+            
+            <div class="info-box">
+                🔍 <strong>Text-Based Detection:</strong> Common diseases based on plant type<br>
+                📸 <em>Image detection coming soon...</em>
+            </div>
+            
+            <div class="input-group">
+                <label for="plantType">Plant Type:</label>
+                <select id="plantType">
+                    <option value="tomato">🍅 Tomato</option>
+                    <option value="potato">🥔 Potato</option>
+                    <option value="wheat">🌾 Wheat</option>
+                    <option value="rice">🍚 Rice</option>
+                    <option value="corn">🌽 Corn</option>
+                </select>
+                <div class="help-text">Select the plant you want to check</div>
+            </div>
+            
+            <button class="btn" onclick="detectDisease()">🦠 Detect Common Diseases</button>
+            <div id="diseaseResult" class="result"></div>
+        </div>
+    </div>
+    
+    <div id="footer-container"></div>
+
+    <script src="assets/js/common.js"></script>
+    <script>
+        async function detectDisease() {
+            showResult('diseaseResult', '<div class="loading">🔬 Analyzing common diseases for selected plant type...</div>');
+            try {
+                const response = await fetch(`${API_BASE}/disease-detection`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        plant_type: document.getElementById('plantType').value
+                    })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    const detection = result.detection_result;
+                    showResult('diseaseResult', `
+                        <strong>🦠 Disease Detection Report</strong>
+                        <br><br>
+                        <strong>🌱 Plant:</strong> ${document.getElementById('plantType').value}<br>
+                        <strong>⚠️ Detected:</strong> ${detection.disease}<br>
+                        <strong>📊 Confidence:</strong> ${detection.confidence}<br>
+                        <strong>💊 Treatment:</strong> ${detection.treatment}
+                    `);
+                } else {
+                    showResult('diseaseResult', `❌ Error: ${result.error}`, 'warning');
+                }
+            } catch (error) {
+                showResult('diseaseResult', `❌ Network error: ${error}`, 'warning');
+            }
+        }
+    </script>
+</body>
+</html>

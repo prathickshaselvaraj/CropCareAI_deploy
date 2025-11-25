@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🐛 Pest Management - CropCareAI</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="module-container">
+            <h2>🐛 Pest Management</h2>
+            <p>Get pest control solutions</p>
+            
+            <div class="input-group">
+                <label for="pestType">Pest Type:</label>
+                <select id="pestType">
+                    <option value="aphids">🦟 Aphids</option>
+                    <option value="caterpillar">🐛 Caterpillar</option>
+                    <option value="fungus">🍄 Fungus</option>
+                    <option value="whiteflies">🦋 Whiteflies</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="cropTypePest">Affected Crop:</label>
+                <select id="cropTypePest">
+                    <option value="wheat">🌾 Wheat</option>
+                    <option value="corn">🌽 Corn</option>
+                    <option value="rice">🍚 Rice</option>
+                    <option value="tomato">🍅 Tomato</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="severity">Infestation Severity:</label>
+                <select id="severity">
+                    <option value="1">🟢 Mild (1) - Few pests spotted</option>
+                    <option value="2">🟡 Moderate (2) - Visible damage</option>
+                    <option value="3">🔴 Severe (3) - Heavy infestation</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="getPesticideRecommendation()">🐛 Get Pest Solution</button>
+            <div id="pesticideResult" class="result"></div>
+        </div>
+    </div>
+    
+    <div id="footer-container"></div>
+
+    <script src="assets/js/common.js"></script>
+    <script>
+        async function getPesticideRecommendation() {
+            showResult('pesticideResult', '<div class="loading">🔍 Analyzing pest situation and severity...</div>');
+            try {
+                const response = await fetch(`${API_BASE}/pesticide-recommendation`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        pest_type: document.getElementById('pestType').value,
+                        crop_type: document.getElementById('cropTypePest').value,
+                        severity: parseInt(document.getElementById('severity').value)
+                    })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    const rec = result.recommendation;
+                    showResult('pesticideResult', `
+                        <strong>✅ Pest Solution Ready</strong>
+                        <br><br>
+                        <strong>🧴 Treatment:</strong> ${rec.pesticide}<br>
+                        <strong>📏 Dosage:</strong> ${rec.dosage}<br>
+                        <strong>⏰ Frequency:</strong> ${rec.frequency}<br>
+                        ${rec.note ? `<br><em>💡 ${rec.note}</em>` : ''}
+                    `);
+                } else {
+                    showResult('pesticideResult', `❌ Error: ${result.error}`, 'warning');
+                }
+            } catch (error) {
+                showResult('pesticideResult', `❌ Network error: ${error}`, 'warning');
+            }
+        }
+    </script>
+</body>
+</html>

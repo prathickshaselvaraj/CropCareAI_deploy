@@ -1,0 +1,169 @@
+{
+  "summary": {
+    "crop_recommendation": {
+      "best_model": "Random Forest",
+      "best_score": 0.5038759689922481,
+      "metric": "accuracy"
+    },
+    "yield_analysis": {
+      "best_model": "Linear Regression",
+      "best_score": 13188562.670521276,
+      "metric": "rmse"
+    },
+    "market_analysis": {
+      "best_model": "Linear Regression",
+      "best_score": 116.2504175293628,
+      "metric": "rmse"
+    },
+    "pesticide_recommendation": {
+      "best_model": "Gradient Boosting",
+      "best_score": 0.275,
+      "metric": "accuracy"
+    }
+  },
+  "detailed_results": {
+    "crop_recommendation": {
+      "Random Forest": {
+        "accuracy": 0.5038759689922481,
+        "cv_mean": 0.23764386547262087,
+        "cv_std": 0.05381835034193888,
+        "training_time": 0.4920015335083008
+      },
+      "Gradient Boosting": {
+        "accuracy": 0.4806201550387597,
+        "cv_mean": 0.2430779104866773,
+        "cv_std": 0.05962585954899383,
+        "training_time": 6.1567933559417725
+      },
+      "Logistic Regression": {
+        "accuracy": 0.46124031007751937,
+        "cv_mean": 0.27724694217970186,
+        "cv_std": 0.09747322997600302,
+        "training_time": 0.7615909576416016
+      },
+      "SVM": {
+        "accuracy": 0.4870801033591731,
+        "cv_mean": 0.3079725623514546,
+        "cv_std": 0.049319843803019785,
+        "training_time": 2.4079244136810303
+      },
+      "Decision Tree": {
+        "accuracy": 0.3850129198966408,
+        "cv_mean": 0.19342472530594917,
+        "cv_std": 0.03670261539895284,
+        "training_time": 0.14082598686218262
+      },
+      "K-Neighbors": {
+        "accuracy": 0.3875968992248062,
+        "cv_mean": 0.23531895263595975,
+        "cv_std": 0.021209231893476267,
+        "training_time": 2.7020554542541504
+      }
+    },
+    "yield_analysis": {
+      "Random Forest": {
+        "rmse": 14401240.392922388,
+        "r2_score": -0.19077748395367067,
+        "training_time": 15.416410446166992
+      },
+      "Gradient Boosting": {
+        "rmse": 13714770.644745313,
+        "r2_score": -0.07996060293375429,
+        "training_time": 2.6675570011138916
+      },
+      "Linear Regression": {
+        "rmse": 13188562.670521276,
+        "r2_score": 0.001321387810384378,
+        "training_time": 0.07947301864624023
+      },
+      "SVR": {
+        "rmse": 13204629.802134655,
+        "r2_score": -0.0011133998404528889,
+        "training_time": 103.31514406204224
+      },
+      "Decision Tree": {
+        "rmse": 16129142.925058218,
+        "r2_score": -0.4936656547136937,
+        "training_time": 0.2134840488433838
+      },
+      "K-Neighbors": {
+        "rmse": 14699510.8944112,
+        "r2_score": -0.240613729837029,
+        "training_time": 0.12119793891906738
+      }
+    },
+    "market_analysis": {
+      "Random Forest": {
+        "rmse": 118.23713824977952,
+        "r2_score": -0.03459338658345157,
+        "training_time": 6.399291753768921
+      },
+      "Gradient Boosting": {
+        "rmse": 116.4249422854692,
+        "r2_score": -0.0031224292459826053,
+        "training_time": 0.9878838062286377
+      },
+      "Linear Regression": {
+        "rmse": 116.2504175293628,
+        "r2_score": -0.00011725739355905596,
+        "training_time": 0.004497528076171875
+      },
+      "SVR": {
+        "rmse": 116.49511816786323,
+        "r2_score": -0.004332070681213773,
+        "training_time": 2.4077095985412598
+      },
+      "Decision Tree": {
+        "rmse": 166.35854580862883,
+        "r2_score": -1.048104488201362,
+        "training_time": 0.13285207748413086
+      }
+    },
+    "pesticide_recommendation": {
+      "pest_classification": {
+        "Random Forest": {
+          "accuracy": 0.19375,
+          "training_time": 0.17019176483154297
+        },
+        "Gradient Boosting": {
+          "accuracy": 0.275,
+          "training_time": 0.5590436458587646
+        },
+        "Logistic Regression": {
+          "accuracy": 0.26875,
+          "training_time": 0.0045468807220458984
+        },
+        "SVM": {
+          "accuracy": 0.21875,
+          "training_time": 0.025193214416503906
+        },
+        "Decision Tree": {
+          "accuracy": 0.225,
+          "training_time": 0.005987405776977539
+        }
+      },
+      "treatment_rules": {
+        "Aphids": {
+          "Low": "Neem oil",
+          "Moderate": "Insecticidal soap",
+          "High": "Pyrethrin"
+        },
+        "Spider mites": {
+          "Low": "Water spray",
+          "Moderate": "Horticultural oil",
+          "High": "Miticide"
+        },
+        "Whiteflies": {
+          "Low": "Sticky traps",
+          "Moderate": "Insecticidal soap",
+          "High": "Systemic insecticide"
+        },
+        "Fungus gnats": {
+          "Low": "Reduce watering",
+          "Moderate": "Nematodes",
+          "High": "Bacillus thuringiensis"
+        }
+      }
+    }
+  }
+}
